@@ -4,12 +4,17 @@
   "version": "0.0.1",
   "description": "Demo app for Pluralsight Docker CI course",
   "main": "app.js",
-  "author": "Nigel Poulton <nigelpoulton@hotmail.com>",
+  "author": "Baruch Frei <baruchf@microsoft.com>",
   "license": "You'd have to be mad to use this in production :-D",
   "dependencies": {
     "express": "3.2.4",
     "jade": "1.11.0",
     "mocha": "1.20.1",
     "supertest": "1.1.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-zip": "^3.0.2",
+    "minimist": "^1.2.0"
   }
 }
