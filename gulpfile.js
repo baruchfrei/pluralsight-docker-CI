@@ -3,6 +3,8 @@ var path = require('path');
 var zip = require('gulp-zip');
 var minimist = require('minimist');
 var fs = require('fs');
+var mocha = require('gulp-mocha');
+
 
 var knownOptions = {
 	string: 'packageName',
@@ -11,6 +13,12 @@ var knownOptions = {
 }
 
 var options = minimist(process.argv.slice(2), knownOptions);
+
+gulp.task('test', () => 
+    gulp.src('test/test.js', {read: false})
+        // gulp-mocha needs filepaths so you can't have any plugins before it
+        .pipe(mocha({reporter: 'nyan'}))
+);
 
 gulp.task('default', function () {
 
@@ -37,3 +45,4 @@ gulp.task('default', function () {
         .pipe(zip(options.packageName))
         .pipe(gulp.dest(options.packagePath));
 });
+
