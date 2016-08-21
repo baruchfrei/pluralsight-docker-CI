@@ -15,9 +15,15 @@ var knownOptions = {
 var options = minimist(process.argv.slice(2), knownOptions);
 
 gulp.task('test', () => 
-   return gulp.src('test/test.js', {read: false})
+    gulp.src('test/test.js', {read: false})
         // gulp-mocha needs filepaths so you can't have any plugins before it
-        .pipe(mocha({reporter: 'progress'}))
+          .pipe(mocha())
+        .once('error', () => {
+            process.exit(1);
+        })
+        .once('end', () => {
+            process.exit();
+        })
 );
 
 gulp.task('default', function () {
